@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Chat Room By Rohit Joshi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="css/app.css"/>
+  </head>
+  <body>
+  	<div class="main_content">
+  		
+
+  	
+<div class="container">
+
+	<div class="row" id="enter_name_row" style="justify-content: center;">
+		<div id="card" class="col-sm-4" >
+		<form id="submit_name" action="">
+			<div class="card card-block">
+			   <div class="alert alert-success" style="padding:10px">
+			   	<strong>Join us on chatroom</strong> 
+			   </div>
+				<div>
+                 <input type="text" name="name" id="inputName" class="form-control" required="required"  title="Enter your name" placeholder="Enter your Name and start chatting">
+				</div>
+				<button type="submit" href="#" class="btn btn-primary">Start chatting</button>
+			</div>
+		</form>
+		</div>
+</div>
+<div id="chat_room" style="margin-top:60px;display:none;padding-bottom:0px">
+	 			<div id="header" >
+	 				<div class="alert alert-info" style="margin-bottom:0;border-radius:0;padding-bottom:0px">
+	 				<strong>Chat Room</strong> 
+	 				<p style="font-size:10px" id="typing_prompt"></p>
+	 			</div>
+	 		  </div>
+                 <div id="chat_logs" style="margin-top:0;background-color:white;height:450px;overflow-y: auto; ">
+                 	<ul id="messages">
+                      
+                 	</ul>
+                 </div>
+			       <div id="footer" >
+			       	<div class="container">
+			       	   <form action="" id="chat_form">
+				       	<div class="row" id="sending_bar">
+							<div  class="col-md-10 nopadding">	
+								<input type="text" name="name" id="m"  class="form-control" required="required"  title="Enter your name" placeholder="Enter your message" autocomplete="off">
+							</div>
+							<div class="col-md-2 nopadding">
+								<input type="submit" class="btn btn-primary" id="send" style="width:100%">
+							</div>
+
+						 </div>
+						</form> 
+					 </div>	 		
+					</div>
+				
+	
+</div>
+
+
+</div>
+<!-- <ul id="messages"></ul>
+    
+      <input  /><button>Send</button>
+     -->
+   
+	
+	
+	
+	
+	
+<script src="js/jquery.min.js" ></script>
+<script src="js/popper.min.js" ></script>
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/socket.io-1.2.0.js"></script>
+    
+    <script>
+
+     var name="";
+     var chat_room_personid=Math.floor(Math.random() * 10000000);	
+     
+    	$(document).ready(function(){
+      	$("form").submit(function(e){
+      	$("#chat_logs").animate({ scrollTop: $('#chat_logs').prop("scrollHeight")}, 1);
+         name=$("#inputName").val();
+         
+      	 e.preventDefault();
+         $("#enter_name_row").hide(200);
+         $("#chat_room").show(500);
+      	 
+      	});
+      });
+      $(function () {
+        var socket = io();
+	        $('#chat_form').submit(function(){
+	        	var message='{"user_id":"'+chat_room_personid+'","username":"'+name+'","message":"'+$('#m').val()+'"}';
+	          socket.emit('chat message', message);
+
+	          $('#m').val('');
+	          return false;
+	        });
+	        $("#m").on('keypress',function(){
+	        	var x=name+" is typing...";
+	            socket.emit('typing', x);      
+	        });
+	         $("#m").on('change',function(){
+	            socket.emit('typing', '');
+	        });
+	         socket.on('typing', function(msg){
+	          $("#typing_prompt").html(msg);
+	          console.log(msg);
+	         });
+         
+        socket.on('chat message', function(msg){
+          // $('#messages').append($('<li>').text(msg));
+          jsonDecode=JSON.parse(msg);
+          var username=jsonDecode.username;
+          var usermessage=jsonDecode.message;
+          if(jsonDecode.new_message==1){
+          	username="";
+          }
+          if(jsonDecode.user_id==chat_room_personid){
+          $('#messages').append('<li class="your_message"><i class="user_name">' + username + '</i>' +usermessage  + '</li>');
+      		}else{
+      			 $('#messages').append('<li class="other_message" ><i class="user_name">'+username+'</i>' + usermessage + '</li>');
+      		}
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+      });
+
+    </script>
+
+
+  </body>
+</html>
