@@ -1,5 +1,5 @@
 # NODEBLOG
-Nodeblog is a MVC Nodejs based basic blog website which is created only for educational purpose.
+Nodeblog is a MVC based Nodejs basic blog website which is created only for Learning purpose.
 You can check our code and get better understanding how to start with nodejs 
 This blog may help you to Learn the basics concept of node js and Routing and Sessions with Express
 
