@@ -1,0 +1,85 @@
+<% include ../layouts/header.ejs %>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<section style="margin-top:80px" style="background:rgb(238, 227, 227)">
+    <!-- <h1>CREATE A POST NOW</h1> -->
+
+
+    <form action="/createpost" method="post" enctype="multipart/form-data">
+    <div class="container" style="background:white;font-family: 'Roboto', sans-serif;font-weight:100px;padding:30px">
+        
+        <div class="row">
+            <div class="col-md-8">
+                    <div>
+                        <div style="background-color: rgb(84, 212, 0);padding:10px;color:white">
+                           
+                                <div><h4>Whats on your mind ??</h4></div>
+                            </div>
+                    </div>       
+                    <br>
+                    <div class="container">
+                        
+                                <div class="row">
+                                
+                                <input type="text" class="form-control" placeholder="Title" name="title" name="title"/>
+                                </div>
+                                <div class="row">
+                                        <br>
+                                        <textarea name="data">
+                                                
+                                        </textarea>
+                                            
+                                </div>
+                                <br>
+                                <div class="row">
+                                    
+                                <button class="btn btn-success" type="submit" >Submit &nbsp;&nbsp;</button>
+                                    &nbsp;
+                                <button class="btn btn-warning" type="button" >Cancel &nbsp;&nbsp;</button>
+                                </div>
+                            
+                    </div>
+                        <script>
+tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor textcolor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code help wordcount'
+  ],
+  toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+  content_css: [
+    'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    'https://www.tinymce.com/css/codepen.min.css']
+});
+$(window).on('load',function(){
+    $('#mceu_34').hide();
+  
+});
+                        </script>  
+            </div>
+              <div class="col-md-4" style="word-wrap:break-word;">
+                <div>
+                    <div style="background-color: rgb(84, 212, 0);padding:10px;color:white">
+                        <div><h4>Sidebar</h4></div>
+                    </div>
+                    <br>
+                    <div style="border:2px solid rgb(89, 215, 247);padding:10px;">
+                        <h6>Upload a file</h6>
+                        <input class="form-control" type="file" name="image" />
+                    </div>
+
+                </div>
+                <div>
+
+                </div>
+              </div>  
+                
+        
+    </div>
+</form>
+</section>
+
+<% include ../layouts/footer.ejs %>
