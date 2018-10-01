@@ -2,9 +2,5 @@
 This Repository contains different javascript project that may help you to learn javascript in a better or easier way.
 
 
-It is Created by Rox Studio Developer for Learning purpose only
-
-
-
-
+It is created for Learning purpose by Rox Studio Developer
 # ThankYou
