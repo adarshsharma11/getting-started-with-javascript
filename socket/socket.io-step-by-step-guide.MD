@@ -6,5 +6,5 @@ It is Open Source step by step guide written by **SkyRockets Community** of Deve
 # Why you need socket in your projects
 + Socket.io enables real-time bidirectional event-based communication.
 + Socket.io event based library,which helps you to reduce your API load,because if you do hard coding to achive real-time in your project than you need to call API Every second. 
-+ You can build various type of real-time application with socket.io like ChatRoom,Messaging application and IOT etc
++ You can build various types of real-time application with socket.io.
 + Socket.io is easy to learn and easy to integrate based library.
