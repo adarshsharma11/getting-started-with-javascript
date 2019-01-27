@@ -1,4 +1,4 @@
-# Make your website Real-Time with Socket.io
+# Build some amazing Real-Time projects with Socket.io
 socket.io-step-by-step-guide is documention about how you can integrate socket.io in your upcoming project.You can build various kind of real-time projects with socket programming like Chat Rooms,Messaging application and also you can integrate socket in your IOT Projects.
 
 It is Open Source step by step guide written by **SkyRockets Community** of Developers
