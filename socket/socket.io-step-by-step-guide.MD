@@ -137,7 +137,9 @@ forever start socket.js
  ```
 forever stop socket.js
 forever start socket.js
+ ```
 	or 
+```
 forever restart socket.js
 ```
 
