@@ -138,7 +138,7 @@ forever start socket.js
 forever stop socket.js
 forever start socket.js
  ```
-	or 
+ or just enter following command
 ```
 forever restart socket.js
 ```
